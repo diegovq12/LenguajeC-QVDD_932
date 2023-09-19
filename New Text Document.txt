@@ -1,0 +1,23 @@
+Expo lenguaje C: Documentacion
+
+Buenas practicas a la hora de documentar el codigo:
+Nomenclatura de funciones, variables, constantes, clases y metodos
+Con esto se quiere dar a entender que debe haber coherencia entre los nombres 
+que lleven nuestras variables con su funcion u objetivo, esto nos hara mas facil
+leer y entender el codigo propio y de otras personas.
+
+Comentarios en el codigo:
+Se pueden hacer de una linea o multilinea, su principal objetivo es despejar 
+dudas que puedan surgir, siendo lo mas corto, claro e informativo posible
+
+Type Hints o "Pistas de tipo"
+Estas son anotaciones en el codigo de programacion que indican el tipo de datos 
+que se espera para una variable, un argumento de funcion o el valor de una funcion
+ayuda al desarrollador a comprender mejor y verificar el tipo de datos que se utiliza 
+en un programa
+
+Facilita la comprension y legibilidad del codigo, al estar mas organizado hace que el codigo sea mas limpio y claro de entender
+por lo mismo acelera el desarrollo al no tener que analizar profundamente el codigo para poder entenderlo
+Fomenta la colaboracion ya que sirve como una forma efectiva para comunicarse entre los miembros del equipo
+simplifica el mantenimiento ya que al tener un orden y una serie de comentarios hace que sea mas facil identificar errores y hallarles una solucion
+Tambien permite la escabilidad ya que al crecer se necesitan nuevas personas y la documentacion facilita la incorporacion de estas
