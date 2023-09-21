@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+//prototipos
+int msges (void);
+void menu (void);
+void fibonacci(void);
+//***************
+
+int main()
+{
+    menu();
+
+    return 0;
+}
+
+int msges(void)
+{
+    int op;
+    printf("Ingrese funcion a utilizar\n");
+    printf("1- Fibonacci sin Recursion\n");
+    printf("2- Fibonacci con Recursion\n");
+    printf("3- Triangulo de pascal\n");
+    printf("0- Salir\n");
+    scanf("%d",&op);
+    return op;
+}
+
+void menu(void)
+{
+    int op;
+    op=msges();
+
+    switch (op)
+    {
+    case 1:
+            fibonacci();
+        break;
+    case 2:
+            
+        break;
+    case 3:
+            
+        break;
+    
+    default:
+        break;
+    }
+}
+
+void fibonacci(void)
+{
+    int n,ant,sig,num;
+    printf("Cuantas veces desea repetir Fibonacci: ");scanf("%d",&n);
+    ant=-1;
+    sig=1;
+    for (int i = 0; i <= n ; i++)
+    {   
+        num=ant+sig;
+        printf(" %d ", num);
+        ant=sig;
+        sig=num;
+    }
+}
