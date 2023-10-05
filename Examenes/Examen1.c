@@ -6,25 +6,26 @@
     Primer Examen Lenguaje C
 */
 
-int main()
+int main() 
 {
-    int num,n,i,j;
-    int suma=0;
-    printf("Cuantas veces: ");scanf("%d",&n);
-    for (j = n; j <= n; j--)
+    int num, i, j;
+    int suma;
+
+    printf("Numero de veces que realizara la funcion: ");
+    scanf("%d", &num);
+
+    for (j = 1; j < num; j++) 
     {
-        num=n;
-        for (i = 1; i < num; i++)
-        {
-            if (num % i == 0)
-            {
-                suma+=i;
+        suma = 0;
+        for (i = 1; i < j; i++) {
+            if (j % i == 0) {
+                suma += i;
             }
         }
-
-        if (suma==num)
-        {
-            printf("%d Perfecto\n",suma);
+        if (suma == j) {
+            printf("%d perfecto\n", j);
         }
     }
+
+    return 0;
 }
