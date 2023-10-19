@@ -1,3 +1,9 @@
+/*
+    Quiros Vicencio Diego Demian
+    Lenguaje C - Taller 6
+    18/10/23
+*/
+
 #include <stdio.h>
 #include <time.h>
 
