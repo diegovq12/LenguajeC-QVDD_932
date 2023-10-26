@@ -26,4 +26,4 @@ int main()
 
         nombres[i] = strdup(temp);
     }
-
+}
