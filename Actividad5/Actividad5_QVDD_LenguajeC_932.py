@@ -2,10 +2,14 @@ import cv2
 import numpy as np
 import imutils
 
-print(cv2.__version__)
+image = cv2.imread('C:\\Users\\diego\\Documents\\diegouni\\LenguajeC-QVDD_932\\Actividad5\\ppchuy.jpg')
+image = imutils.resize(image, width=500)
 
-image = cv2.imread('ppchuy.jpeg')
+imageGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-cv2.imshow('Image',image)
+# Muestra la imagen origina
+cv2.imshow('Imagen Original', image)
+# Muestra la imagen en blanco y negro
+cv2.imshow('Imagen en Blanco y Negro', imageGray)
 cv2.waitKey(0)
-cv2.destroyAllWindows
+cv2.destroyAllWindows()
