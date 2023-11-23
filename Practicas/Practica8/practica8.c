@@ -12,6 +12,14 @@ typedef struct _Producto
     float precio;
 } Tproducto;
 
+void menu(void);
+int msge(void);
+void agregarElementos(Tproducto invent[], int i);
+void agregarElemento(Tproducto vect[], int i);
+void retirarElemento(Tproducto inventario[], int numElem);
+void mostrarInventario(Tproducto inventario[], int numElem);
+void calcularValorTotal(Tproducto inventario[], int numElem);
+
 int msge(void)
 {
     printf("\n1. AGREGAR ELEMENTOS AL INVENTARIO\n");
@@ -38,10 +46,20 @@ void menu(void)
         switch (op)
         {
         case 1:
-            agregarElementos(inventario,numElem);
+            agregarElementos(inventario, numElem);
+            break;
+        case 2:
+            retirarElemento(inventario, numElem);
+            break;
+        case 3:
+            mostrarInventario(inventario, numElem);
+            break;
+        case 4:
+            calcularValorTotal(inventario, numElem);
             break;
         
         default:
+            printf("GRACIAS POR USAR!");
             break;
         }
     } while (op != 0);
@@ -69,35 +87,24 @@ void agregarElementos(Tproducto invent[], int i)
 
 void agregarElemento(Tproducto vect[], int i)
 {
-    vect[i].id = randNum(1,MAX);
     getString(vect[i].nombre, "INGRESA NOMBRE DEL PRODUCTO: ");
     vect[i].cantidad = validInt(1, 100, "INGRESE CANTIDAD: ", "EXCEDE LOS ESPACIOS");
     fflush(stdin);
-    scanf("%f",&vect[i].precio);
+    scanf("%f", &vect[i].precio);
 }
 
-int buscar(Tproducto regs[], int index, int id)
+void retirarElemento(Tproducto inventario[], int numElem)
 {
-    for (int i = 0; i < index; i++)
-    {
-        if (id == regs[i].id)
-        {
-            return i;
-        }
-    }
-    return -1;
-}
-
-void retirarElemento(Tproducto inventario[], int numElem) {
     char nombreBuscado[20];
-    printf("INGRESE NOMBRE DE PRODUCTO A RETIRAR: ");
-    scanf("%s", nombreBuscado);
-
+    getString(nombreBuscado, "INGRESE NOMBRE DE PRODUCTO A RETIRAR: ");
     int encontrado = 0;
-    for (int i = 0; i < numElem; i++) {
-        if (strcmp(inventario[i].nombre, nombreBuscado) == 0) {
+    for (int i = 0; i < numElem; i++)
+    {
+        if (strcmp(inventario[i].nombre, nombreBuscado) == 0)
+        {
 
-            for (int j = i; j < numElem - 1; j++) {
+            for (int j = i; j < numElem - 1; j++)
+            {
                 inventario[j] = inventario[j + 1];
             }
             (numElem)--;
@@ -107,19 +114,35 @@ void retirarElemento(Tproducto inventario[], int numElem) {
         }
     }
 
-    if (!encontrado) {
+    if (!encontrado)
+    {
         printf("PRODUCTO NO ENCONTRADO EN EL INVENTARIO\n");
     }
 }
 
-void mostrarInventario(Tproducto inventario[], int numElem) {
-    if (numElem == 0) {
+void mostrarInventario(Tproducto inventario[], int numElem)
+{
+    if (numElem == 0)
+    {
         printf("INVENTARIO VACIO\n");
-    } else {
+    }
+    else
+    {
         printf("INVENTARIO: \n");
-        for (int i = 0; i < numElem; i++) {
+        for (int i = 0; i < numElem; i++)
+        {
             printf("NOMBRE: %s, CANTIDAD: %d, PRECIO: %.2f\n",
                    inventario[i].nombre, inventario[i].cantidad, inventario[i].precio);
         }
     }
+}
+
+void calcularValorTotal(Tproducto inventario[], int numElem)
+{
+    float valorTotal = 0.0;
+    for (int i = 0; i < numElem; i++)
+    {
+        valorTotal += inventario[i].cantidad * inventario[i].precio;
+    }
+    printf("El valor total del inventario es: %.2f\n", valorTotal);
 }
