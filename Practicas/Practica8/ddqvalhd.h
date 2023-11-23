@@ -39,10 +39,6 @@ void getString(char string[], char msge[]) {
     //string[i] = '\0';
 }
 
-
-#include <stdio.h>
-#include <stdlib.h>
-
 int validInt(int ri, int rf, char* msge, char* msgeWrong) {
     int num;
     char input[50];

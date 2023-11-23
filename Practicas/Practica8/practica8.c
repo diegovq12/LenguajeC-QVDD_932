@@ -3,7 +3,7 @@
 #include <time.h>
 #include "ddqvalhd.h"
 
-#define MAX 100
+#define MAX 10
 
 typedef struct _Producto
 {
@@ -14,11 +14,19 @@ typedef struct _Producto
 
 void menu(void);
 int msge(void);
-void agregarElementos(Tproducto invent[], int i);
-void agregarElemento(Tproducto vect[], int i);
+void agregarElementos(Tproducto invent[], int numElem);
+//void agregarElemento(Tproducto vect[], int i);
 void retirarElemento(Tproducto inventario[], int numElem);
 void mostrarInventario(Tproducto inventario[], int numElem);
 void calcularValorTotal(Tproducto inventario[], int numElem);
+
+int main()
+{
+    srand(time(NULL));
+    menu();
+    
+    return 0;
+}
 
 int msge(void)
 {
@@ -57,7 +65,7 @@ void menu(void)
         case 4:
             calcularValorTotal(inventario, numElem);
             break;
-        
+
         default:
             printf("GRACIAS POR USAR!");
             break;
@@ -65,33 +73,25 @@ void menu(void)
     } while (op != 0);
 }
 
-void agregarElementos(Tproducto invent[], int i)
+void agregarElementos(Tproducto invent[], int numElem)
 {
-    printf("INGRESAR CUANTOS ELEMENTOS AGREGAR: ");
-    int num = validInt(1, 10, "INGRESAR CUANTOS PRODUCTOS AGREGAR: ", "INVALIDO");
-
-    if (i + num <= MAX)
+    if (numElem < MAX)
     {
-        for (int j = 0; j < num; j++)
-        {
-            agregarElemento(invent, i);
-            i++;
-        }
+        printf("INGRESE EL NOMBRE DEL PRODUCTO: ");
+        scanf("%s", &invent[numElem].nombre);
+        printf("INGRESE LA CANTIDAD DEL PRODUCTO: ");
+        scanf("%d", &invent[numElem].cantidad);
+        printf("INGRESE EL PRECIO DEL PRODUCTO: ");
+        scanf("%f", &invent[numElem].precio);
+        (numElem)++;
+        printf("PRODUCTO AGREGADO AL INVENTARIO.\n");
     }
     else
     {
-        printf("EXCEDERIA EL INVENTARIO\n");
-        printf("PUEDE INGRESAR %d PRODUCTOS MAS\n", MAX - i);
+        printf("EL INVENTARIO ESTÁ LLENO. NO SE PUEDEN AGREGAR MÁS PRODUCTOS.\n");
     }
 }
 
-void agregarElemento(Tproducto vect[], int i)
-{
-    getString(vect[i].nombre, "INGRESA NOMBRE DEL PRODUCTO: ");
-    vect[i].cantidad = validInt(1, 100, "INGRESE CANTIDAD: ", "EXCEDE LOS ESPACIOS");
-    fflush(stdin);
-    scanf("%f", &vect[i].precio);
-}
 
 void retirarElemento(Tproducto inventario[], int numElem)
 {
